@@ -1,0 +1,91 @@
+/*
+Este é o arquivo de estilos customizado.
+*/
+/* 
+    Created on : 29-Aug-2015, 3:41:51 PM
+    Author     : Filipe
+*/
+
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+/*body > .container {
+  padding: 60px 15px 0;
+}*/
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+code {
+  font-size: 80%;
+}
+
+
+/* CSS PERSONALIZADO */
+
+/* BUSCA VISUAL */
+.grafo {
+    height: 690px;
+    background-color: #f5f5f5;
+}
+
+.carregando {
+    background: rgba( 255, 255, 255, .2 ) 
+                url('../img/ring.svg') 
+                50% 50% 
+                no-repeat;
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+    //padding-top: 10px;    
+}
+
+.centralizado {
+    text-align: center;
+}
+
+.no-padding{
+    padding: 0px;
+}
+
+.btn-overlay {
+    position: absolute;
+    margin: 10px;
+    z-index: 100;
+}
+
+.overlay {
+    position: absolute;
+    z-index: 100;
+}
+
+.block-details tr{
+    background-color: #FFFFFF;
+}
