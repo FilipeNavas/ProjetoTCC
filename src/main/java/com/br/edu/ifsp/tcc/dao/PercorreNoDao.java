@@ -89,8 +89,8 @@ public class PercorreNoDao implements PercorreNoInterface{
                 //Seta o relacionamento
                 switch (strRelacionamento) {
 
-                    case "E_UMA":
-                            percorreNo.setRelacionamento(Relacionamento.E_UMA);
+                    case "EH_UMA":
+                            percorreNo.setRelacionamento(Relacionamento.EH_UMA);
                         break;
 
                     case "ESTA_CONTIDO":
@@ -227,13 +227,11 @@ public class PercorreNoDao implements PercorreNoInterface{
         //cria um map chamado params para colocar chave/valor
        Map<String, Object> params = new HashMap<>();
        
-       //coloca o valor conceito na chave conceito
+       //coloca o valor busca na chave busca
        params.put( "busca", "(?i)" + busca);
         
 	try ( Transaction transaction = db.beginTx();
-                
-        //"START n = node(*) MATCH (n)-[r]->(x) return n, type(r), x"
-                
+                             
         Result result = db.execute( "START n = node(*)"
                                     + "MATCH (n)-[r]->(x)"
                                     + "WHERE"
@@ -285,8 +283,8 @@ public class PercorreNoDao implements PercorreNoInterface{
                 //Seta o relacionamento
                 switch (strRelacionamento) {
 
-                    case "E_UMA":
-                            percorreNo.setRelacionamento(Relacionamento.E_UMA);
+                    case "EH_UMA":
+                            percorreNo.setRelacionamento(Relacionamento.EH_UMA);
                         break;
 
                     case "ESTA_CONTIDO":
@@ -408,8 +406,8 @@ public class PercorreNoDao implements PercorreNoInterface{
                 //Seta o relacionamento
                 switch (strRelacionamento) {
 
-                    case "E_UMA":
-                            percorreNo.setRelacionamento(Relacionamento.E_UMA);
+                    case "EH_UMA":
+                            percorreNo.setRelacionamento(Relacionamento.EH_UMA);
                         break;
 
                     case "ESTA_CONTIDO":

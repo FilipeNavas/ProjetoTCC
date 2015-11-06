@@ -373,7 +373,7 @@
                             <div class="col-md-4">
                                 <label for="relacionamento">Relacionamento</label>
                                 <select class="col-md-12" id="selectTodosRelacionamentos">
-                                    <option value="E_UMA">É UMA</option>
+                                    <option value="EH_UMA">É UMA</option>
                                     <option value="EH">É</option>
                                     <option value="ESTA_CONTIDO">ESTÁ CONTIDO</option>
                                 </select>                             

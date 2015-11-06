@@ -103,9 +103,7 @@ public class NoDao implements NoInterface{
         
         //Pega o ultimo no para incrementar o id
         No ultimoNo = buscarUltimoNo();
-        
         String id;
-        
         Node novoNoNeo4j;
         Node noFinalNeo4j;       
         
@@ -142,12 +140,9 @@ public class NoDao implements NoInterface{
                     novoNoNeo4j.createRelationshipTo( noFinalNeo4j, percorreNo.getRelacionamento() );
                 }
             }
-            
             //Finaliza a transacao
             tx.success();
-            
         }//fim do try
-       
     }
     
     public Node buscarNoNeo4jPorId(String id){
@@ -250,29 +245,19 @@ public class NoDao implements NoInterface{
         
         //Pega o Banco
         db = ConexaoBanco.getConnection();       
-        
         List listaDeNos = new ArrayList();
         
 	try ( Transaction transaction = db.beginTx();
-                
-        //"START n = node(*) MATCH (n)-[r]->(x) return n, type(r), x"
-                
         Result result = db.execute( " Match (n)"
                                     + " Return n") ){
             
             while ( result.hasNext() ){
-                
                 Map<String,Object> row = result.next();
-        
                 Node n = (Node) row.get("n");
-
                 No no = new No();
-
                 for (String propriedade : n.getPropertyKeys()) {   
-
                     //Seta os atributos de NoInicial
                     switch (propriedade){
-
                         case "id":
                             no.setId(n.getProperty(propriedade).toString());
                         break;
@@ -284,23 +269,16 @@ public class NoDao implements NoInterface{
                         case "descricao":
                             no.setDescricao(n.getProperty(propriedade).toString());
                         break;
-
                     }
-
                 }  
-
                 listaDeNos.add(no);
-
                }//fim do while
-            
             //Finaliza a transacao
             transaction.success();
-            
         }//Fim do result execute
         
         //retorna a lista
         return listaDeNos;  
-
     }
 
     @Override

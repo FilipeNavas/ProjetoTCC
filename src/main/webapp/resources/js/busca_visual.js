@@ -145,7 +145,7 @@ $(document).ready(function() {
                     
                     //noFinal: "tipo: Linguagem de programacao. "
                     //noInicial: "Java"
-                    //tipoRelacionamento: "e_uma"
+                    //tipoRelacionamento: "eh_uma"
 
                     //######### GRAFO ##########
                     
@@ -286,7 +286,7 @@ $(document).ready(function() {
                     
                     //noFinal: "tipo: Linguagem de programacao. "
                     //noInicial: "Java"
-                    //tipoRelacionamento: "e_uma"
+                    //tipoRelacionamento: "eh_uma"
 
                     //######### GRAFO ##########
                     

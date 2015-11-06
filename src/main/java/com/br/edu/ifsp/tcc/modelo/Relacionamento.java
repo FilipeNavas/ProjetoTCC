@@ -15,7 +15,7 @@ import org.neo4j.graphdb.RelationshipType;
  */
 public enum Relacionamento implements RelationshipType{
     
-    E_UMA,
+    EH_UMA,
     ESTA_CONTIDO,
     EH;
     

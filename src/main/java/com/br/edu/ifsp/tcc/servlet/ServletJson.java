@@ -157,8 +157,8 @@ public class ServletJson extends HttpServlet {
                             
                             //Adiciona o tipo de relacionamento
                             switch(relStr){
-                                case "E_UMA":
-                                    pn.setRelacionamento(Relacionamento.E_UMA);
+                                case "EH_UMA":
+                                    pn.setRelacionamento(Relacionamento.EH_UMA);
                                 break;
                                 case "EH":
                                     pn.setRelacionamento(Relacionamento.EH);
@@ -246,7 +246,7 @@ public class ServletJson extends HttpServlet {
                         List lista = new ArrayList();
                         lista.add(Relacionamento.EH);
                         lista.add(Relacionamento.ESTA_CONTIDO);
-                        lista.add(Relacionamento.E_UMA);
+                        lista.add(Relacionamento.EH_UMA);
                         
                         //Converte para JSON
                         // create a new Gson instance

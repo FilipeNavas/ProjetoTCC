@@ -5,6 +5,7 @@
  */
 package com.br.edu.ifsp.tcc.dao;
 
+import java.io.File;
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
 
@@ -25,7 +26,8 @@ public final class ConexaoBanco {
             if(!instanciado){
 
                 dbFactory = new GraphDatabaseFactory();
-                db = dbFactory.newEmbeddedDatabase("C:/Neo4jDB");
+                File file = new File("C:/Neo4jDB");
+                db = dbFactory.newEmbeddedDatabase(file);
                 registerShutdownHook( db );
                 instanciado = true;
             
