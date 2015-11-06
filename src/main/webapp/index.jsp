@@ -51,7 +51,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="${pageContext.request.contextPath}/">Ínicio</a></li>
-                <li><a href="${pageContext.request.contextPath}/buscaTextual.jsp">Busca Textual</a></li>
+                <%--<li><a href="${pageContext.request.contextPath}/buscaTextual.jsp">Busca Textual</a></li>--%>
                 <li><a href="${pageContext.request.contextPath}/buscaVisual.jsp">Busca Visual</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">

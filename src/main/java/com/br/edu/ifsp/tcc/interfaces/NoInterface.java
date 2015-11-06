@@ -21,7 +21,7 @@ public interface NoInterface {
      * @param busca
      * @return 
      */
-    public No bucarNoPorId(String busca);
+    public No buscarNoPorId(String busca);
     
     public void criarNo(No novoNo, List<PercorreNo> listaNoRelacionamentos);
     
@@ -32,5 +32,7 @@ public interface NoInterface {
     public List<No> buscarTodosNos();
     
     public void editarNo(No no, List<PercorreNo> listaNoRelacionamentos);
+    
+    public void deletarNo(No no, List<PercorreNo> listaNoRelacionamentos);
 
 }

@@ -59,24 +59,24 @@ public class ServletJson extends HttpServlet {
                         //Cria um objeto de ConceitoDao
                         PercorreNoInterface percorreNoDao = new PercorreNoDao();
                         //Chama o metodo de busca
-                        List lista = percorreNoDao.bucarTodos();
+                        List lista = percorreNoDao.buscarTodos();
                         //Converte para JSON
                         // create a new Gson instance
                         Gson gson = new Gson();
                         // convert your list to json
-                        String jsonLivros = gson.toJson(lista);
+                        String jsonTodos = gson.toJson(lista);
 
                         //Outro meio de mandar o Json
-                        response.getWriter().write(jsonLivros);
+                        response.getWriter().write(jsonTodos);
                         break;
                     }
                 
                 case "busca":
                     {
-                        //Cria um objeto de ConceitoDao
+                        //Cria um objeto de PercorreNoDao
                         PercorreNoInterface percorreNoDao = new PercorreNoDao();
                         //Chama o metodo de busca
-                        List lista = percorreNoDao.bucarNos(conceito);
+                        List lista = percorreNoDao.buscarNos(conceito);
                         //Converte para JSON
                         // create a new Gson instance
                         Gson gson = new Gson();
@@ -97,7 +97,7 @@ public class ServletJson extends HttpServlet {
                         NoInterface noDao = new NoDao();
                         
                         //Chama o metodo de busca
-                        No no = noDao.bucarNoPorId(idNo);
+                        No no = noDao.buscarNoPorId(idNo);
                         
                         //noDao.createNo();
                         
@@ -176,13 +176,39 @@ public class ServletJson extends HttpServlet {
                         
                         NoInterface noDao = new NoDao();
                         
+                        //Pega o Id do no (se tiver - tem no editar e deletar)
+                        String idNo = request.getParameter("idNo");
+                        novoNo.setId(idNo);
+                        
+                        //Se a o relacionamento da lista for nula no primeiro elemento,
+                        //quer dizer que nao foi adicionado nenhum no e relacionamento de vdd.
+                        //O unico elemento que tem eh o noNovo (noInicial) que sempre passamos.
+                        PercorreNo pn = (PercorreNo) listaPercorreNo.get(0);
+                                
+                        if(pn.getRelacionamento() == null){
+                            listaPercorreNo = null;
+                        }
+                        
                         //Ve qual a operacao (se eh novo ou editar)
                         switch (operacao){
                             case "novo":
+                                
+                               
                                 noDao.criarNo(novoNo, listaPercorreNo);
                                 break;
                             case "editar":
+                                
+                                //Cria um objeto de PercorreNoDao
+                                //PercorreNoInterface percorreNoDao = new PercorreNoDao();
+                        
+                                //List pnLista = percorreNoDao.bucarPercorreNoPorIdNo(idNo);
+                                
                                 noDao.editarNo(novoNo, listaPercorreNo);
+                                break;
+                                
+                            //Excluir o No(e seus relacionamentos)
+                            case "deletar":
+                                noDao.deletarNo(novoNo, listaPercorreNo);
                                 break;
                         }
                         
@@ -190,7 +216,8 @@ public class ServletJson extends HttpServlet {
                         Gson gson = new Gson();
                         
                         // convert to json
-                        String jsonString = gson.toJson("suceso");
+                        //Retorna uma msg
+                        String jsonString = gson.toJson("SUCESSO");
 
                         //Outro meio de mandar o Json
                         response.getWriter().write(jsonString);
@@ -231,6 +258,36 @@ public class ServletJson extends HttpServlet {
                         response.getWriter().write(jsonRelacionamentos);
                         
                     }
+                case "buscaRelacionamentosDoNo":
+                    {
+                        //Cria um objeto de PercorreNoDao
+                        PercorreNoInterface percorreNoDao = new PercorreNoDao();
+
+                        String idNo = request.getParameter("idNo");
+
+                        List pnLista = percorreNoDao.buscarPercorreNoPorIdNo(idNo);
+                        
+                        //Converte para JSON
+                        // create a new Gson instance
+                        Gson gson = new Gson();
+                        String retorno;
+                            
+                        //Se a lista estiver vazio retorna a msg "vazio"
+                        if(pnLista.isEmpty()){
+                            
+                            retorno = "vazio";
+
+                        }else{
+                        
+                            // convert your list to json
+                            retorno = gson.toJson(pnLista);
+
+                        }
+                        
+                        //Envia o Json
+                        response.getWriter().write(retorno);
+                    }
+                    
             }
 
         }catch (IOException exc){

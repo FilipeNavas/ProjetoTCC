@@ -81,7 +81,7 @@
                     <div class="col-md-12">
 
                         <div class="col-md-6 col-md-offset-1">
-                            <label class="col-md-12">Conceito</label>
+                            <label class="col-md-12">Assunto</label>
                         </div> 
 
                         <%--
@@ -93,7 +93,7 @@
 
                     <div class="row col-md-12">
                         <div class="col-md-6 col-md-offset-1">
-                            <input type="text" id ="conceito" name="conceito" class="col-md-12 input-lg" />
+                            <input type="text" id ="conceito" name="conceito" class="col-md-11 col-sm-8 col-sm-offset-2 input-lg" />
                         </div>
 
                         <%--
@@ -108,7 +108,7 @@
                         --%>
                         
                         <div class="col-md-4">
-                            <a href="#" id="btnEnviar"  class="btn btn-success btn-large input-lg centralizado col-md-12" style="font-size: 22px;">
+                            <a href="#" id="btnEnviar"  class="btn btn-success btn-large input-lg centralizado col-md-11 col-sm-8 col-sm-offset-2" style="font-size: 22px;">
                                 Buscar
                             </a>
                             
@@ -128,29 +128,152 @@
             
         </div> <!-- Fim Div Container -->
         
+        <div class="container hidden-lg hidden-md" style="margin-top: 20px;">
+            <div align="center">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <a id="btnFocarMobile" href="#" class="btn btn-default btn-sm col-sm-3">
+                            <span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span>
+                            Focar
+                        </a>
+                        <a id="btnTodosMobile" href="#" class="btn btn-default btn-sm col-sm-3">
+                            <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                            Todos
+                        </a>
+
+
+                        <a id="btnModalMobile" href="#" class="btn btn-default btn-sm col-sm-3">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            Novo Nó
+                        </a>
+                        
+                        <!-- BUTTON GROUP - ESTILOS DO GRAFO -->
+                        <div class="btn-group col-sm-3">
+                          <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Estilos do Grafo<span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu">
+
+                            <li><a href="#">Direção do Grafo</a></li>
+                            <li>
+                              <a id="btnEsquerdaDireita" href="#">
+                                  <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                                  Esquera pra Direita
+                              </a>
+                            </li>
+                            <li>
+                              <a id="btnDireitaEsquerda" href="#">
+                                  <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                                  Direita para Esquerda
+                              </a>
+                            </li>
+                            <li>
+                              <a id="btnCimaBaixo" href="#">
+                                  <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                                  Cima para Baixo
+                              </a>
+                            </li>
+                            <li>
+                              <a id="btnBaixoCima" href="#">
+                                  <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                                  Baixo para Cima
+                              </a>
+                            </li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Estilo dos Relacionamentos</a></li>
+                            <li>
+                              <a id="btnEstiloDireto" href="#">
+                                  <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
+                                  Direto
+                              </a>
+                            </li>
+                            <li>
+                              <a id="btnEstiloHubsize" href="#">
+                                  <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+                                  Agrupa no Maior Nó (Hubsize)
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
         
-        <div class="row col-md-12" style="margin-top: 20px;">
+        
+        <div class="row col-md-12 " style="margin-top: 20px;">
                 
             <div class="col-md-12">
                 
-                <div class="row col-md-12">
-                    <div class="col-md-1">
+                <div class="row col-sm-12">
+                    <div class="col-md-1 col-sm-2 hidden-sm hidden-xs">
                         <a id="btnFocar" href="#" class="btn btn-default btn-sm overlay">
                             <span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span>
                             Focar
                         </a>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-sm-2 hidden-sm hidden-xs">
                         <a id="btnTodos" href="#" class="btn btn-default btn-sm overlay">
                             <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
                             Todos
                         </a>
                     </div>
-                    <div class="col-md-1">
+                    <div class="col-md-1 col-sm-2 hidden-sm hidden-xs">
                         <a id="btnModal" href="#" class="btn btn-default btn-sm overlay">
                             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                             Novo Nó
                         </a>
+                    </div>
+                    
+                    <!-- BUTTON GROUP - ESTILOS DO GRAFO -->
+                    <div class="col-md-1 col-sm-2 btn-group hidden-sm hidden-xs">
+                      <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Estilos do Grafo<span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu">
+                        
+                        <li><a href="#">Direção do Grafo</a></li>
+                        <li>
+                          <a id="btnEsquerdaDireita" href="#">
+                              <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                              Esquera pra Direita
+                          </a>
+                        </li>
+                        <li>
+                          <a id="btnDireitaEsquerda" href="#">
+                              <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                              Direita para Esquerda
+                          </a>
+                        </li>
+                        <li>
+                          <a id="btnCimaBaixo" href="#">
+                              <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                              Cima para Baixo
+                          </a>
+                        </li>
+                        <li>
+                          <a id="btnBaixoCima" href="#">
+                              <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                              Baixo para Cima
+                          </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Estilo dos Relacionamentos</a></li>
+                        <li>
+                          <a id="btnEstiloDireto" href="#">
+                              <span class="glyphicon glyphicon glyphicon-sort" aria-hidden="true"></span>
+                              Direto
+                          </a>
+                        </li>
+                        <li>
+                          <a id="btnEstiloHubsize" href="#">
+                              <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+                              Agrupa no Maior Nó (Hubsize)
+                          </a>
+                        </li>
+                      </ul>
                     </div>
                     
                     <div id="blockDetails" class="col-md-2 col-md-offset-10 overlay no-padding block-details"> 
@@ -177,7 +300,25 @@
             
         </div>
             
-        <footer class="footer">
+        <footer class="footer hidden-xs hidden-sm hidden-md">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="col-md-4">
+                        <p class="text-muted">Desenvolvido por  <a href="https://github.com/willcehsar/">Willian César</a>  e <a href="https://github.com/FilipeNavas">Filipe Navas</a></p>
+                    </div>
+                    <div class="col-md-7">
+                        <p class="text-muted">Orientado por Profª Dra. Rosana Ferrareto, Profº Ms. Gustavo Prieto e Ms. Maria Carolina</p>
+                    </div>
+                    <div class="col-md-1">
+                        <p class="text-muted"><a href="https://sbv.ifsp.edu.br/">IFSP</a></p>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </footer>
+        
+        <footer class="hidden-lg">
             <div class="container">
                 <div class="col-md-12">
                     <div class="col-md-4">
@@ -232,7 +373,10 @@
                             <div class="col-md-4">
                                 <label for="relacionamento">Relacionamento</label>
                                 <select class="col-md-12" id="selectTodosRelacionamentos">
-                                </select>
+                                    <option value="E_UMA">É UMA</option>
+                                    <option value="EH">É</option>
+                                    <option value="ESTA_CONTIDO">ESTÁ CONTIDO</option>
+                                </select>                             
                             </div>
 
                             <div class="col-md-6">
@@ -258,14 +402,31 @@
                         
                         <hr class="col-md-12 row">
                         <div class="form-group">
-                            <a id="btnSalvarNo" href="#" class="btn btn-success col-md-10 col-sm-offset-1">
+                            <a id="btnSalvarNo" href="#!" class="btn btn-success col-sm-10 col-sm-offset-1">
                                 <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                                 Salvar Nó
                             </a>
-                            <div id="msgSalvarNo" class="alert col-md-12" style="margin-top: 10px;"></div>
+                            <div id="msgSalvarNo" class="alert col-sm-12" style="margin-top: 10px;"></div>
                         </div>
                         
-                        <input type="text" id="inputOperacao" />
+                        <div id="deletarNo" class="form-group" style="display: none;">
+                            <a id="btnDeletarNo" href="#!" class="btn btn-danger col-sm-10 col-sm-offset-1">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                Deletar Nó
+                            </a>
+                            
+                            <a id="btnDeletarNoConfirmar" href="#!" class="btn btn-warning col-sm-10 col-sm-offset-1" style="display: none;">
+                                <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                                Confirme para Deletar Nó                               
+                            </a>
+                            
+                        </div>
+                        
+                        <%-- INPUT QUE GUARDA QUAL TIPO DE OPERACAO - NOVO OU EDITAR --%>
+                        <input class="hidden" type="text" id="inputOperacao" />
+                        
+                        <%-- INPUT QUE GUARDA O ID DO NO QDO FOR EDITAR --%>
+                        <input class="hidden" type="text" id="inputIdNo" />
 
                     </form>
                   

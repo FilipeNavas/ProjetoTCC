@@ -12,9 +12,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.neo4j.graphdb.DynamicLabel;
 
 import org.neo4j.graphdb.GraphDatabaseService;
 import org.neo4j.graphdb.Node;
+import org.neo4j.graphdb.Relationship;
 import org.neo4j.graphdb.Result;
 import org.neo4j.graphdb.Transaction;
 import org.neo4j.graphdb.factory.GraphDatabaseFactory;
@@ -30,7 +32,7 @@ public class NoDao implements NoInterface{
     GraphDatabaseService db;
     
     @Override
-    public No bucarNoPorId(String busca){
+    public No buscarNoPorId(String busca){
         
         //Pega o Banco
         db = ConexaoBanco.getConnection();
@@ -122,18 +124,23 @@ public class NoDao implements NoInterface{
             novoNoNeo4j = db.createNode();
             
             //Atribui as propriedades
+            novoNoNeo4j.addLabel( DynamicLabel.label( "Assunto" ));
             novoNoNeo4j.setProperty( "id", id);
             novoNoNeo4j.setProperty( "nome", novoNo.getNome() );
             novoNoNeo4j.setProperty( "descricao", novoNo.getDescricao());
             
-            //Cria os relacionamentos com os outros nos
-            for (PercorreNo percorreNo : listaNoRelacionamentos) {
+            //Se a lista nao estiver vazia vamos criar os relacionamentos
+            if(listaNoRelacionamentos != null){
                 
-                //Busca o No (do Neo4j) pelo id
-                noFinalNeo4j = buscarNoNeo4jPorId(percorreNo.getNoFinal().getId());
-            
-                //Cria os relacionamentos
-                novoNoNeo4j.createRelationshipTo( noFinalNeo4j, percorreNo.getRelacionamento() );
+                //Cria os relacionamentos com os outros nos
+                for (PercorreNo percorreNo : listaNoRelacionamentos) {
+
+                    //Busca o No (do Neo4j) pelo id
+                    noFinalNeo4j = buscarNoNeo4jPorId(percorreNo.getNoFinal().getId());
+
+                    //Cria os relacionamentos
+                    novoNoNeo4j.createRelationshipTo( noFinalNeo4j, percorreNo.getRelacionamento() );
+                }
             }
             
             //Finaliza a transacao
@@ -299,6 +306,12 @@ public class NoDao implements NoInterface{
     @Override
     public void editarNo(No no, List<PercorreNo> listaNoRelacionamentos){
         
+        //ta dando algum erro aqui, debugar pra ver.
+        
+        //Fazer o editar, se der pra add os relacionamentos blz, senao deixa sem - Ok
+        //Fazer o remover.
+        //Fazer a busca de todos melhor pra buscar td mesmo, todos os nos q tem a ver com aquele.
+        
         //Pega o Banco
         db = ConexaoBanco.getConnection();
         
@@ -310,16 +323,48 @@ public class NoDao implements NoInterface{
             noNeo4j.setProperty( "nome", no.getNome() );
             noNeo4j.setProperty( "descricao", no.getDescricao());
             
-            //Cria os relacionamentos com os outros nos
-            for (PercorreNo percorreNo : listaNoRelacionamentos) {
+            if(listaNoRelacionamentos != null){
+            
+                //Cria os relacionamentos com os outros nos
+                for (PercorreNo percorreNo : listaNoRelacionamentos) {
+
+                    //Busca o No (do Neo4j) pelo id
+                    //Node noInicialNeo4j = buscarNoNeo4jPorId(percorreNo.getNoInicial().getId());
+                    
+                    //Busca o No Final
+                    Node noFinalNeo4j = buscarNoNeo4jPorId(percorreNo.getNoFinal().getId());
+
+                    //Cria os relacionamentos
+                    noNeo4j.createRelationshipTo(noFinalNeo4j, percorreNo.getRelacionamento() );
+                }
                 
-                //Busca o No (do Neo4j) pelo id
-                noNeo4j = buscarNoNeo4jPorId(percorreNo.getNoFinal().getId());
-            
-                //Cria os relacionamentos
-                noNeo4j.createRelationshipTo( noNeo4j, percorreNo.getRelacionamento() );
             }
+            //Finaliza a transacao
+            tx.success();
             
+        }//fim do try
+        
+    }
+    
+    
+    @Override
+    public void deletarNo(No no, List<PercorreNo> listaNoRelacionamentos){
+        
+        //Pega o Banco
+        db = ConexaoBanco.getConnection();
+        
+        try ( Transaction tx = db.beginTx() ){
+            
+            Node noNeo4j = buscarNoNeo4jPorId(no.getId());
+            
+            //Itera e deleta os relacionamentos do No
+            for (Relationship relacionamentoNeo4j : noNeo4j.getRelationships()) {
+               relacionamentoNeo4j.delete();
+            }
+
+            //Deleta o no
+            noNeo4j.delete();
+        
             //Finaliza a transacao
             tx.success();
             

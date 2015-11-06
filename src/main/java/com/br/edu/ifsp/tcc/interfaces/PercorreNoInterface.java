@@ -17,13 +17,22 @@ public interface PercorreNoInterface {
     * Este metodo busca tudo o que existe no BD.
     * @return List<PercorreNo>
     */
-   public List<PercorreNo> bucarTodos();
+   public List<PercorreNo> buscarTodos();
    
    /**
     * Este metodo faz a busca de nos e relacionamentos pela busca do usuario.
     * @param busca
     * @return 
     */
-   public List<PercorreNo> bucarNos(String busca);
+   public List<PercorreNo> buscarNos(String busca);
+   
+   /**
+    * Busca o PercorreNo(s) de um dado no.
+    * Usado pra pegar os relacionamentos de um no.
+    * @param id
+    * @return 
+    */
+   public List<PercorreNo> buscarPercorreNoPorIdNo(String id);
+   
     
 }
