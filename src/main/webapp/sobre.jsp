@@ -30,7 +30,7 @@
         <!-- CUSTOM JS -->
         <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
     
-        <title>Inicio</title>
+        <title>Sobre</title>
         
     
    </head>
@@ -52,7 +52,7 @@
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
                 <li><a href="${pageContext.request.contextPath}/">Ínicio</a></li>
-                <li><a href="${pageContext.request.contextPath}/buscaTextual.jsp">Busca Textual</a></li>
+<!--                <li><a href="${pageContext.request.contextPath}/buscaTextual.jsp">Busca Textual</a></li>-->
                 <li><a href="${pageContext.request.contextPath}/buscaVisual.jsp">Busca Visual</a></li>
               </ul>
               <ul class="nav navbar-nav navbar-right">
@@ -81,9 +81,11 @@
                         
                         <hr>
                         <p>
-                            Layout feito com <a href="http://getbootstrap.com">Bootstrap</a>
+                            Layout feito com <a href="http://getbootstrap.com" target="_new">Bootstrap</a>
                             <br>
-                            Grafo feito com <a href="http://visjs.org/index.html">Vis.js</a>
+                            Grafo feito com <a href="http://visjs.org/index.html" target="_new">Vis.js</a>
+                            <br>
+                            Banco de Dados <a href="http://neo4j.com" target="_new">Neoj4</a>
                         </p>
    
                     </div>

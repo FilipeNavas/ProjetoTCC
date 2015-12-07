@@ -658,12 +658,13 @@ function createGraph(nodes, edges){
 
                 
                 hierarchical: {
-                    sortMethod: 'directed',
+                    sortMethod: layoutMethod,
                     direction: direction, //'UD', //UD, DU, LR, RL
                     levelSeparation: 150
                     
                 } 
-            },
+            }
+            ,
             edges: {
               smooth: true,
               arrows: {to : true }
@@ -853,7 +854,7 @@ function pegarRelacionamentos(){
                 console.log(data);
                 
                 var options = "";
-                //$("#selectTodosRelacionamentos").html(''); //Limpa todo o select pra nao gerar options duplicados
+                $("#selectTodosRelacionamentos").html(''); //Limpa todo o select pra nao gerar options duplicados
                 
                 $.each( data, function( key, val ) {
                     

@@ -67,9 +67,9 @@
             
         
             <div class="jumbotron centralizado">
-                <h1>Indexador Ontologia</h1>
+                <h1>Ferramenta de Indexação</h1>
                 <strong class="lead">
-                    Ferramenta de apoio à bibliotecários na indexação de obras no acervo.
+                    Ferramenta de apoio à bibliotecários na indexação de obras do acervo
                 </strong>
             </div>
         </div>

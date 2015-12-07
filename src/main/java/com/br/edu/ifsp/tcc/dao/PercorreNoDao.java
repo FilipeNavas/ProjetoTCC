@@ -448,13 +448,32 @@ public class PercorreNoDao implements PercorreNoInterface{
                 percorreNo.setNoFinal(noFinal);
 
                 //adiciona na lista o percorreNo
-                lista.add(percorreNo);           
+                lista.add(percorreNo); 
+                
+                /*
+                //Para evitar a duplicacao
+                for(int i = 0; i <= lista.size(); i++){
+                    int cont = 0;//contador
+                    
+                    //Se o percorreNo jah existe, vamos entrar aqui
+                    if(lista.get(i).equals(percorreNo)){
+                        cont++;
+                    }
+                    
+                    //Se entrou mais de uma vez, ta duplicado, apaga o ultimo adicionado na lista.
+                    if(cont>1){
+                        lista.remove(percorreNo);
+                    }
+                }
+                */
                 
             }//fim do while
         
             transaction.success();
         
         }//Fim do result execute
+        
+        
         
         return lista;
           
